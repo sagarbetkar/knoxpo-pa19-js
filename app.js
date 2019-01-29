@@ -64,7 +64,7 @@ const userController = require('./controllers/user');
 app.post('/api/v1/create', userController.createUser);
 app.get('/api/v1/getAll', userController.getUser);
 app.get('/api/v1/get/:id', userController.getUserById);
-/*app.update('/api/v1/update', userController.updateUser);*/
+app.put('/api/v1/update/:id', userController.updateUser);
 app.delete('/api/v1/delete/:id', userController.deleteUser);
 
 /**
