@@ -85,3 +85,21 @@ exports.getUserById = (req, res) => {
       });
     });
 };
+
+exports.deleteUser = (req, res) => {
+  User.findOne({where: {id: req.params.id}})
+    .then((user) => {
+      user.destroy();
+      res.json({
+        message: 'User deleted successfully',
+        status: 200
+      });
+    })
+    .catch((error) => {
+      res.json({
+        message: 'Server Error',
+        error: error,
+        status: 500
+      });
+    });
+};
