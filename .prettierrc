@@ -4,5 +4,5 @@
   "arrowParens": "always",
   "proseWrap": "never",
   "printWidth": 80,
-  "bracketSpacing": true
+  "bracketSpacing": false
 }

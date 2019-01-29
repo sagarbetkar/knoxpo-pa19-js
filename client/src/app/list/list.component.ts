@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-list',
@@ -6,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-
-  constructor() { }
+  users$: Object;
+  constructor(private data: DataService) {}
 
   ngOnInit() {
+    this.data.getAllUser().subscribe((data) => (this.users$ = data['data']));
   }
-
 }
