@@ -23,7 +23,7 @@ exports.createUser = (req, res) => {
           });
         }
       })
-      .catch((errors) => {
+      .catch((error) => {
         return res.json({
           message: 'Server Error',
           error: errors,
@@ -55,10 +55,32 @@ exports.getUser = (req, res) => {
         status: 200
       });
     })
-    .catch((errors) => {
+    .catch((error) => {
       res.json({
         message: 'Server Error',
         error: errors,
+        status: 500
+      });
+    });
+};
+
+exports.getUserById = (req, res) => {
+  User.findOne({where: {id: req.params.id}})
+    .then((user) => {
+      res.json({
+        data: {
+          name: user.name,
+          email: user.email,
+          mobile: user.mobile,
+          'job-title': user.job_title
+        },
+        status: 200
+      });
+    })
+    .catch((error) => {
+      res.json({
+        message: 'Server Error',
+        error: error,
         status: 500
       });
     });
