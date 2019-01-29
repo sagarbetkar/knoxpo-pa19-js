@@ -37,3 +37,29 @@ exports.createUser = (req, res) => {
     });
   }
 };
+
+exports.getUser = (req, res) => {
+  User.findAndCountAll()
+    .then((users) => {
+      res.json({
+        message: 'All user fetched',
+        count: users.count,
+        data: users.rows.map((user) => {
+          return (user = {
+            name: user.name,
+            email: user.email,
+            mobile: user.mobile,
+            'job-title': user.job_title
+          });
+        }),
+        status: 200
+      });
+    })
+    .catch((errors) => {
+      res.json({
+        message: 'Server Error',
+        error: errors,
+        status: 500
+      });
+    });
+};

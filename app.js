@@ -62,8 +62,8 @@ const userController = require('./controllers/user');
  * Api
  */
 app.post('/api/v1/create', userController.createUser);
-/* app.get('/api/v1/get', userController.getUserById);
 app.get('/api/v1/getAll', userController.getUser);
+/*app.get('/api/v1/get', userController.getUserById);
 app.update('/api/v1/update', userController.updateUser);
 app.delete('/api/v1/delete', userController.deleteUser); */
 
