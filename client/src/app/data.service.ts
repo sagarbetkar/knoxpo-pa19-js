@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +13,9 @@ export class DataService {
 
   getAllUser() {
     return this.http.get('http://localhost:2611/api/v1/getAll');
+  }
+
+  deleteUser(id) {
+    return this.http.delete(`http://localhost:2611/api/v1/delete/${id}`);
   }
 }

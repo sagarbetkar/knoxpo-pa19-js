@@ -19,7 +19,7 @@ const User = sequelize.define('user', {
   id: {type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
   name: {type: Sequelize.STRING, allowNull: false},
   email: {type: Sequelize.STRING, allowNull: false, unique: true},
-  mobile: {type: Sequelize.BIGINT, allowNull: false, unique: true},
+  mobile: {type: Sequelize.BIGINT, allowNull: false},
   job_title: {type: Sequelize.STRING, allowNull: false},
   createdAt: Sequelize.DATE,
   updatedAt: Sequelize.DATE
