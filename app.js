@@ -64,6 +64,9 @@ const userController = require('./controllers/user');
 /**
  * Api
  */
+app.get('/', (req, res) => {
+  res.send('Invalid Endpoint');
+});
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/dist/client/index.html'));
 });
