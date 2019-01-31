@@ -9,6 +9,7 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {AddComponent} from './add/add.component';
 import {ListComponent} from './list/list.component';
 import {EditComponent} from './edit/edit.component';
+import { WeatherComponent } from './weather/weather.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {EditComponent} from './edit/edit.component';
     NavbarComponent,
     AddComponent,
     ListComponent,
-    EditComponent
+    EditComponent,
+    WeatherComponent
   ],
   imports: [
     BrowserModule,

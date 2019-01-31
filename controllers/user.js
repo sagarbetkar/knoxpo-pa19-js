@@ -200,16 +200,19 @@ exports.postWeather = (req, res) => {
       });
     } else {
       let weather = JSON.parse(body);
-      console.log(weather);
       if (weather == undefined) {
         res.json({
           message: 'Error, please try again',
           status: 500
         });
       } else {
-        data = weather.list.map((list) => list.main);
+        temp = weather.list.map((list) => list.main.temp);
+        dateTime = weather.list.map((list) => list.dt_txt);
         res.json({
-          message: data,
+          message: {
+            temp,
+            dateTime
+          },
           status: 200
         });
       }

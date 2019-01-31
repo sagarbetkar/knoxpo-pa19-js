@@ -1,0 +1,44 @@
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="city" class="sr-only">City</label>
+      <input
+        type="text"
+        class="form-control"
+        id="city"
+        aria-describedby="cityHelp"
+        placeholder="City Name"
+        [(ngModel)]="weather.city"
+        name="city"
+      />
+      <small id="cityHelp" class="form-text text-muted"
+        >User has to put city name</small
+      >
+    </div>
+    <button
+      type="button"
+      class="btn btn-primary mb-2"
+      (click)="onSubmit(weather.city)"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover table-dark">
+      <thead>
+        <tr>
+          <!-- <th scope="col">Date & Time</th> -->
+          <th scope="col">Temperature</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let weatherTemp of weatherTemps$">
+          <!-- <td>{{ weatherData.date }}</td> -->
+          <td>{{ weatherTemp }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -26,4 +26,7 @@ export class DataService {
   updateUser(data, id) {
     return this.http.put(`http://localhost:2611/api/v1/update/${id}`, data);
   }
+  postWeather(data) {
+    return this.http.post('http://localhost:2611/api/v1/weather', data);
+  }
 }
