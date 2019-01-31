@@ -31,7 +31,7 @@ exports.createUser = (req, res) => {
       .catch((error) => {
         return res.json({
           message: 'Server Error',
-          error: errors,
+          error: error,
           status: 500
         });
       });
@@ -71,7 +71,7 @@ exports.getUser = (req, res) => {
     .catch((error) => {
       res.json({
         message: 'Server Error',
-        error: errors,
+        error: error,
         status: 500
       });
     });

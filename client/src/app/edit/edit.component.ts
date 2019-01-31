@@ -43,4 +43,14 @@ export class EditComponent implements OnInit {
       });
     });
   }
+
+  onSubmit() {
+    this.data.updateUser(this.userForm.value, this.id).subscribe((data) => {
+      if (data['message'] === 'User updated successfully') {
+        console.log('User updated successfully');
+      } else {
+        console.log('User update failed');
+      }
+    });
+  }
 }
