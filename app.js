@@ -5,6 +5,7 @@ const errorhandler = require('errorhandler');
 const dotenv = require('dotenv');
 const sequelize = require('./config/database');
 const cors = require('cors');
+const path = require('path');
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -53,6 +54,8 @@ sequelize
     console.error('Unable to connect to the database: ', err);
   });
 
+app.use(express.static(path.join(__dirname, 'client/dist/client')));
+
 /**
  * Controllers
  */
@@ -61,6 +64,9 @@ const userController = require('./controllers/user');
 /**
  * Api
  */
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/dist/client/index.html'));
+});
 app.post('/api/v1/create', userController.createUser);
 app.get('/api/v1/getAll', userController.getUser);
 app.get('/api/v1/get/:id', userController.getUserById);
