@@ -18,4 +18,12 @@ export class DataService {
   deleteUser(id) {
     return this.http.delete(`http://localhost:2611/api/v1/delete/${id}`);
   }
+
+  getUserById(id) {
+    return this.http.get(`http://localhost:2611/api/v1/get/${id}`);
+  }
+
+  updateUser(data, id) {
+    return this.http.put(`http://localhost:2611/api/v1/update/${id}`, data);
+  }
 }

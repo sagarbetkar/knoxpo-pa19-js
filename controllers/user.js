@@ -1,7 +1,12 @@
 const User = require('../models/User');
 
 exports.createUser = (req, res) => {
-  if (req.body.name && req.body.email && req.body.mobile && req.body.job_title) {
+  if (
+    req.body.name &&
+    req.body.email &&
+    req.body.mobile &&
+    req.body.job_title
+  ) {
     User.findOne({where: {email: req.body.email}})
       .then((user) => {
         if (user) {
@@ -52,10 +57,11 @@ exports.getUser = (req, res) => {
           count: users.count,
           data: users.rows.map((user) => {
             return (user = {
+              id: user.id,
               name: user.name,
               email: user.email,
               mobile: user.mobile,
-              'job-title': user.job_title
+              designation: user.job_title
             });
           }),
           status: 200
@@ -82,10 +88,11 @@ exports.getUserById = (req, res) => {
       } else {
         return res.json({
           data: {
+            id: user.id,
             name: user.name,
             email: user.email,
             mobile: user.mobile,
-            'job-title': user.job_title
+            designation: user.job_title
           },
           status: 200
         });
@@ -101,7 +108,12 @@ exports.getUserById = (req, res) => {
 };
 
 exports.updateUser = (req, res) => {
-  if (req.body.name && req.body.email && req.body.mobile && req.body.job_title) {
+  if (
+    req.body.name &&
+    req.body.email &&
+    req.body.mobile &&
+    req.body.job_title
+  ) {
     User.findOne({where: {id: req.params.id}})
       .then((user) => {
         if (user == null) {

@@ -19,7 +19,14 @@
           <td>{{ user.email }}</td>
           <td>{{ user.mobile }}</td>
           <td>{{ user.designation }}</td>
-          <td><button type="button" class="btn btn-primary">Edit</button></td>
+          <td>
+            <a
+              routerLink="/edit/{{ user.id }}"
+              type="button"
+              class="btn btn-primary"
+              >Edit</a
+            >
+          </td>
           <td>
             <a type="button" class="btn btn-danger" (click)="onDelete(user.id)">
               Delete
