@@ -66,7 +66,7 @@ app.get('/api/v1/getAll', userController.getUser);
 app.get('/api/v1/get/:id', userController.getUserById);
 app.put('/api/v1/update/:id', userController.updateUser);
 app.delete('/api/v1/delete/:id', userController.deleteUser);
-
+app.post('/api/v1/weather', userController.postWeather);
 /**
  * Error Handler
  */

@@ -1,4 +1,12 @@
+const request = require('request');
 const User = require('../models/User');
+const dotenv = require('dotenv');
+
+dotenv.load({
+  path: '.env'
+});
+
+const apiKey = process.env.OWM_API_KEY;
 
 exports.createUser = (req, res) => {
   if (
@@ -178,4 +186,33 @@ exports.deleteUser = (req, res) => {
         status: 500
       });
     });
+};
+
+exports.postWeather = (req, res) => {
+  let city = req.body.city;
+  let url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
+
+  request(url, (err, response, body) => {
+    if (err) {
+      res.json({
+        message: 'Error, please try again',
+        status: 500
+      });
+    } else {
+      let weather = JSON.parse(body);
+      console.log(weather);
+      if (weather == undefined) {
+        res.json({
+          message: 'Error, please try again',
+          status: 500
+        });
+      } else {
+        data = weather.list.map((list) => list.main);
+        res.json({
+          message: data,
+          status: 200
+        });
+      }
+    }
+  });
 };
